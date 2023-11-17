@@ -1,8 +1,6 @@
-import React from 'react'
-
 const AdminDetails = () => {
   return (
-    <div>AdminDetails</div>
+    <div>admin details</div>
   )
 }
 

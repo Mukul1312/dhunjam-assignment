@@ -1,6 +1,8 @@
 import { Outlet, createBrowserRouter } from "react-router-dom";
 import { AdminLoginPage, AdminDetailsPage } from "./pages";
 import Root from "./Root";
+import { adminLoginAction, adminDetailsUpdateAction } from "./api/actions";
+import { adminDetailsLoader } from "./api/loaders";
 
 const router = createBrowserRouter([
   {
@@ -11,8 +13,8 @@ const router = createBrowserRouter([
         path: "admin",
         Component: Outlet,
         children: [
-          { index: true, Component: AdminLoginPage },
-          { path: ":id", Component: AdminDetailsPage },
+          { index: true, Component: AdminLoginPage, action: adminLoginAction },
+          { path: ":id", Component: AdminDetailsPage, loader: adminDetailsLoader, action: adminDetailsUpdateAction },
         ],
       },
     ],
