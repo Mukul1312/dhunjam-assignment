@@ -19,7 +19,7 @@ const AdminLogin = () => {
   return (
     <Container
       maxWidth="lg"
-      sx={{ display: "flex", flexDirection: "column", width: "30%", justifyContent: "center", height: "100vh" }}
+      sx={{ display: "flex", flexDirection: "column", width: {md: "30%"}, justifyContent: "center", height: "100vh" }}
     >
       <h1>Venue Admin Login</h1>
       <Form method="post">

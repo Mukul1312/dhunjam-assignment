@@ -46,6 +46,9 @@ const styles = {
         padding: "5px",
         height: "30px",
         color: '#FFFFFF',
+        width: '100%',
+        maxWidth: '600px',
+        textAlign: 'center',
     },
 }
 
