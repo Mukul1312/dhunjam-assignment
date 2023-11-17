@@ -59,7 +59,7 @@ const AdminDetails = () => {
   }
 
   const style = {
-    color: !data.charge_customers ? "#FFFFFF" : "#C2C2C2",
+    color: data.charge_customers ? "#FFFFFF" : "#C2C2C2",
   };
 
   // replace underscores from keys with space and capitalize first letter
@@ -78,6 +78,8 @@ const AdminDetails = () => {
       },
     ],
   };
+
+  console.log(data.charge_customers)
 
   return (
     <Container
@@ -104,7 +106,7 @@ const AdminDetails = () => {
               <RadioGroup
                 row
                 aria-labelledby="demo-row-radio-buttons-group-label"
-                name="charging-status"
+                name="charging_status"
                 defaultValue={data.charge_customers ? "yes" : "no"}
               >
                 <FormControlLabel value="yes" control={<BpRadio />} label="Yes" />
@@ -119,7 +121,7 @@ const AdminDetails = () => {
             <input
               min="99"
               type="number"
-              name="custom-amount"
+              name="custom_amount"
               defaultValue={data.amount.category_6}
               disabled={!data.charge_customers}
               style={style}
@@ -128,12 +130,12 @@ const AdminDetails = () => {
           <Box gridColumn="span 6">
             <p style={style}>Regular song request amounts, from high to low</p>
           </Box>
-          <Box gridColumn="span 6">
+           <Box gridColumn="span 6">
             <Stack direction="row" spacing={1}>
               <input
                 min="99"
                 type="number"
-                name="category-7"
+                name="category_7"
                 defaultValue={data.amount.category_6}
                 disabled={!data.charge_customers}
                 style={style}
@@ -141,7 +143,7 @@ const AdminDetails = () => {
               <input
                 min="99"
                 type="number"
-                name="category-8"
+                name="category_8"
                 defaultValue={data.amount.category_7}
                 disabled={!data.charge_customers}
                 style={style}
@@ -149,7 +151,7 @@ const AdminDetails = () => {
               <input
                 min="99"
                 type="number"
-                name="category-9"
+                name="category_9"
                 defaultValue={data.amount.category_8}
                 disabled={!data.charge_customers}
                 style={style}
@@ -157,7 +159,7 @@ const AdminDetails = () => {
               <input
                 min="99"
                 type="number"
-                name="category-10"
+                name="category_10"
                 defaultValue={data.amount.category_9}
                 disabled={!data.charge_customers}
                 style={style}
@@ -165,18 +167,19 @@ const AdminDetails = () => {
             </Stack>
           </Box>
         </Box>
-        <BarChart chartData={chartData} />
+        {data.charge_customers && <BarChart chartData={chartData} />}
         <Button
           type="submit"
           variant="contained"
           sx={{
-            backgroundColor: "#6741D9",
+            backgroundColor: !data.charge_customers ? "#C2C2C2" : "#6741D9",
             width: "100%",
             "&:hover": {
-              border: "1px solid #F0C3F1",
-              backgroundColor: "#6741D9",
+              border: !data.charge_customers ? "" : "1px solid #6741D9",
+              backgroundColor: !data.charge_customers ? "#C2C2C2" : "#6741D9",
             },
           }}
+          disabled={!data.charge_customers}
         >
           Save
         </Button>

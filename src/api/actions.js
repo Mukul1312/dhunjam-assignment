@@ -24,8 +24,25 @@ const adminLoginAction = async ({ request }) => {
 
 const adminDetailsUpdateAction = async ({ params, request }) => {
   // Fetching data from an API
-  console.log("params", params);
-  console.log("request", request);
+  const { id } = params;
+  const FormData = await request.formData();
+  const charging_status = FormData.get("charging_status") == "yes" ? true : false;
+  const custom_amount = FormData.get("custom_amount");
+  const category_7 = FormData.get("category_7");
+  const category_8 = FormData.get("category_8");
+  const category_9 = FormData.get("category_9");
+  const category_10 = FormData.get("category_10");
+  
+  const response = await axios.put(`https://stg.dhunjam.in/account/admin/${id}`, {
+    charge_customers: charging_status,
+    amount: {
+      category_6: custom_amount,
+      category_7,
+      category_8,
+      category_9,
+      category_10,
+    },
+  });
 
   return {
     id: 1,
